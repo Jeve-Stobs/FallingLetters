@@ -1,0 +1,146 @@
+body {
+  height: 100vh;
+  background: #252627;
+  overflow: hidden;
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
+  color: #eee;
+  font-family: -apple-system, "Segoe UI", "Roboto", "Helvetica Neue", sans-serif;
+  font-family: monospace;
+  font-size: 5vh;
+  position: relative;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+main p {
+  font-size: 1rem;
+  text-align: center;
+  margin-top: 5vh;
+  padding: 0 2rem;
+  max-width: 30rem;
+  line-height: 1.4;
+}
+
+header,
+footer {
+  height: 5vh;
+  line-height: 5vh;
+  font-size: 3vh;
+  background: #aa6657;
+  text-align: right;
+  text-transform: uppercase;
+  padding: 0 2.5vh;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+}
+footer ul {
+  display: flex;
+  flex-direction: row-reverse;
+}
+footer ul .misses {
+  padding: 0.5vh;
+  transition: all 0.225s ease-out;
+}
+footer ul .misses.missed {
+  opacity: 0.4;
+  transform: rotate(-45deg);
+}
+
+main > div {
+  position: absolute;
+  top: 5vh;
+  left: 0;
+  text-transform: uppercase;
+  perspective: 300px;
+  transition: opacity 0.7s ease-in;
+  font-size: 5vh;
+}
+main > div.popped {
+  opacity: 0;
+}
+main > div.popped > span {
+  -webkit-animation-play-state: paused;
+          animation-play-state: paused;
+}
+main > div.popped > span b {
+  opacity: 0;
+}
+main > div.missed {
+  opacity: 0;
+}
+main > div.missed > span {
+  -webkit-animation-play-state: paused;
+          animation-play-state: paused;
+}
+main > div > span {
+  position: absolute;
+  display: block;
+  -webkit-animation: waver 2s infinite alternate ease-in-out;
+          animation: waver 2s infinite alternate ease-in-out;
+  perspective: 300px;
+}
+main > div > span b {
+  display: block;
+  padding: 2.5vh;
+  transition: opacity 0.25s linear;
+}
+
+@-webkit-keyframes waver {
+  100% {
+    transform: translate3d(6vw, 0, 0);
+  }
+}
+
+@keyframes waver {
+  100% {
+    transform: translate3d(6vw, 0, 0);
+  }
+}
+#game-over {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.75s ease-out;
+  background: rgba(0, 0, 0, 0.75);
+  position: absolute;
+  top: 5vh;
+  right: 0;
+  bottom: 5vh;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-transform: uppercase;
+}
+#game-over.indeed {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+button {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border-radius: 0;
+  border: 0.3rem solid #eee;
+  color: #eee;
+  font-size: 3vh;
+  padding: 1.5vh 2vh;
+  background: transparent;
+  margin-top: 5vh;
+  font-family: monospace;
+}
+button:hover {
+  border-color: #aa6657;
+}
